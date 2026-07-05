@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "OpenHire Serverless API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for OpenHire backend API endpoints",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    }
+  },
+  "item": [
+    {
+      "name": "Get jobs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/jobs",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "jobs"]
+        }
+      }
+    },
+    {
+      "name": "Create job",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Senior Frontend Engineer\",\n  \"company\": \"OpenHire Labs\",\n  \"logo\": \"OH\",\n  \"location\": \"Remote\",\n  \"type\": \"Remote\",\n  \"salary\": \"$120k – $150k\",\n  \"tags\": [\"React\", \"TypeScript\"],\n  \"posted\": \"1d ago\",\n  \"applicants\": 12,\n  \"description\": \"Build modern job matching experiences.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/jobs",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "jobs"]
+        }
+      }
+    },
+    {
+      "name": "Get applications",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/applications",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "applications"]
+        }
+      }
+    },
+    {
+      "name": "Create application",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobId\": \"<existingJobId>\",\n  \"status\": \"Applied\",\n  \"applied\": \"Today\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/applications",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "applications"]
+        }
+      }
+    },
+    {
+      "name": "Get recruiter postings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/recruiter-postings",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "recruiter-postings"]
+        }
+      }
+    },
+    {
+      "name": "Create recruiter posting",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Senior Backend Engineer\",\n  \"applicants\": 0,\n  \"views\": 0,\n  \"status\": \"Active\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/recruiter-postings",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "recruiter-postings"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    }
+  ]
+}
