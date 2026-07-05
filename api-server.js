@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
@@ -93,13 +94,15 @@ app.post("/api/recruiter-postings", async (req, res) => {
 });
 
 const distPath = path.join(__dirname, "dist");
+const outputPublicPath = path.join(__dirname, ".output", "public");
+const frontendPath = fs.existsSync(outputPublicPath) ? outputPublicPath : distPath;
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(distPath));
+  app.use(express.static(frontendPath));
   app.get("*", (req, res) => {
     if (req.path.startsWith("/api")) {
       return res.status(404).json({ message: "Not found" });
     }
-    res.sendFile(path.join(distPath, "index.html"));
+    res.sendFile(path.join(frontendPath, "index.html"));
   });
 }
 
